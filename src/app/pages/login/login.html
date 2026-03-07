@@ -1,0 +1,21 @@
+<div class="auth-container">
+  <h2>Login</h2>
+  <form>
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email">
+
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password">
+
+    <button type="button" (click)="login()">Login</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <p>
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+  </p>
+</div>

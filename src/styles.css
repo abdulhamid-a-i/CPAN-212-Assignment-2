@@ -1,1 +1,112 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Times New Roman', Times, serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  position: absolute;
+  top: 40px;
+  font-size: 28px;
+  color: #1f2937;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.auth-container {
+  width: 420px;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.1),
+    0 4px 15px rgba(0,0,0,0.05);
+}
+
+.auth-container:hover {
+  transform: translateY(-3px);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #111827;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+input, select {
+  padding: 14px 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 18px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #515e7e;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+button {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #6d89c5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #6585cc;
+  transform: translateY(-1px);
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+a {
+  color: #6d89c5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
