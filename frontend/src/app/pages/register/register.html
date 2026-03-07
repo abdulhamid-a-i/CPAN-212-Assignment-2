@@ -19,9 +19,11 @@
     <button type="button" (click)="register()">Register</button>
   </form>
   
-  <div *ngIf="errorMessage" class="error-message">
+  @if (errorMessage) {
+  <div class="error-message">
     {{ errorMessage }}
   </div>
+}
 
   <p>
     <a routerLink="/">Back to login</a>

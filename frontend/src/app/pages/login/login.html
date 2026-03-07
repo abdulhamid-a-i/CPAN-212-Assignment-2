@@ -10,9 +10,11 @@
     <button type="button" (click)="login()">Login</button>
   </form>
 
-  <div *ngIf="errorMessage" class="error-message">
+  @if (errorMessage) {
+  <div class="error-message">
     {{ errorMessage }}
   </div>
+}
   
   <p>
     Don't have an account?
