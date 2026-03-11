@@ -3,7 +3,7 @@ import {
   createQuote,
   getQuotesForRequest,
   acceptQuote
-} from "../controllers/OLDquoteController.js";
+} from "../controllers/quoteController.js";
 
 import { requireAuth } from "../middleware/requireAuth.js";
 import { requireRole } from "../middleware/requireRole.js";
