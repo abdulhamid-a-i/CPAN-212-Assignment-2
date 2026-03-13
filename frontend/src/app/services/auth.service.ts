@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,7 @@ export class AuthService {
     return this.http.post(`${this.api}/logout`, {}, { withCredentials: true });
   }
 
-  me() {
-    return this.http.get(`${this.api}/me`, { withCredentials: true });
+  me(): Observable<User> {
+  return this.http.get<User>(`${this.api}/me`, { withCredentials: true });
   }
 }

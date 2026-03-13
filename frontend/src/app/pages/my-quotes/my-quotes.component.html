@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>My Quotes</h2>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngIf="quotes.length === 0">
+    <p>No quotes submitted yet.</p>
+  </div>
+
+  <div class="quote-box" *ngFor="let quote of quotes">
+    <p><strong>Request ID:</strong> {{ quote.requestId }}</p>
+    <p><strong>Price:</strong> ${{ quote.price }}</p>
+    <p><strong>Message:</strong> {{ quote.message }}</p>
+    <p><strong>Days to Complete:</strong> {{ quote.daysToComplete }}</p>
+    <p><strong>Status:</strong> {{ quote.status }}</p>
+
+    <a [routerLink]="['/requests', quote.requestId]">View Request</a>
+  </div>
+</div>
