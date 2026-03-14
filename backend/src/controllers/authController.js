@@ -63,10 +63,12 @@ export const login = async (req, res, next) => {
     req.session.role = user.role;
 
     res.json({
-      _id: user._id,
-      fullName: user.fullName,
-      email: user.email,
-      role: user.role
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role
+      }
     });
 
   } catch (err) {

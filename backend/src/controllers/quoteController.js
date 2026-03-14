@@ -89,7 +89,7 @@ export const acceptQuote = async (req, res, next) => {
       return next(new AppError("Not authorized to accept this quote", 403));
     }
 
-    if (request.status !== "open") {
+    if (request.status !== "quoted") {
       return next(new AppError("Request is not open for accepting quotes", 400));
     }
 

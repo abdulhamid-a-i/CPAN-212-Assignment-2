@@ -7,10 +7,7 @@
 
 body {
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
 }
 
 h1 {
@@ -22,7 +19,59 @@ h1 {
   letter-spacing: 1px;
 }
 
+.app-shell {
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: rgba(13, 93, 214, 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logout-btn {
+  background-color: #b12e0e;
+  border: none;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.2s ease;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-links a {
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: 0.2s ease;
+  color: antiquewhite;
+}
+
+.nav-links a:hover,
+.active-link {
+  color: darkgoldenrod;
+  background: var(--surface);
+}
+
 .auth-container {
+  min-height: calc(100vh - 160px);
+  display: grid;
+  place-items: center;
+}
+
+.auth-card {
   width: 420px;
   background: #ffffff;
   padding: 50px 40px;
@@ -30,10 +79,17 @@ h1 {
   box-shadow:
     0 20px 40px rgba(0,0,0,0.1),
     0 4px 15px rgba(0,0,0,0.05);
+  margin: auto 0;
 }
 
-.auth-container:hover {
+.auth-card:hover {
   transform: translateY(-3px);
+}
+
+.page-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
 }
 
 h2 {
@@ -95,7 +151,6 @@ p {
 }
 
 a {
-  color: #6d89c5;
   text-decoration: none;
   font-weight: 600;
 }

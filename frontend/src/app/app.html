@@ -1,2 +1,17 @@
-<h1>Neighborhood Service Marketplace</h1>
-<router-outlet></router-outlet>
+<div class="app-shell">
+    <header class="topbar">
+        <div>
+            <h1>Neighborhood Service Marketplace</h1>
+        </div>
+    <nav class="nav-links" *ngIf="authService.authenticated()">
+      <a routerLink="/requests" routerLinkActive="active-link">Service Requests</a>
+      <a routerLink="/requests/new" routerLinkActive="active-link">New Service Request</a>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </nav>
+    </header>
+
+    <div class="page-container">
+    <router-outlet></router-outlet>
+    </div>
+</div>
+
