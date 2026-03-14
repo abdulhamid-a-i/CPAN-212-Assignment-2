@@ -8,6 +8,16 @@
     <p><strong>Category:</strong> {{ categoryName}}</p>
     <p><strong>Location:</strong> {{ request.location }}</p>
     <p><strong>Status:</strong> {{ request.status }}</p>
+    <button
+      *ngIf="currentUser?.role === 'resident' && request.status === 'assigned'"
+      (click)="UpdateRequest('completed')">
+      Complete Request
+    </button>
+    <button
+      *ngIf="currentUser?.role === 'resident' && request.status === 'assigned'"
+      (click)="UpdateRequest('cancelled')">
+      Cancel Request
+    </button>
   </div>
 
   <p class="success" *ngIf="successMessage">{{ successMessage }}</p>

@@ -1,4 +1,5 @@
 import ServiceRequest from "../models/ServiceRequest.js";
+import Quote from "../models/Quote.js";
 import AppError from "../utils/AppError.js";
 import { validateRequestStatus } from "../utils/validator.js";
 
@@ -94,6 +95,12 @@ export const updateRequestStatus = async (req, res, next) => {
     if (!result.ok){
       throw new AppError(`Invalid Transition: ${request.status} to ${status}`, 400)
     }
+
+    const acceptedQuote = await Quote.findById(request.acceptedQuoteId);
+    if (acceptedQuote && status === 'cancelled'){
+      acceptedQuote.status = 'rejected';
+      acceptedQuote.save();
+    } 
 
     request.status = status;
 

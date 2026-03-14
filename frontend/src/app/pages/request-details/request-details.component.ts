@@ -145,4 +145,20 @@ export class RequestDetailsComponent implements OnInit {
       }
     });
   }
+
+  UpdateRequest(status: string): void {
+    this.requestService.updateStatus(this.requestId,{status: status}).subscribe({
+      next: () => {
+        this.successMessage = 'Request completed'
+        this.errorMessage = '';
+        this.loadQuotes();
+        this.loadRequest();
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.message || 'Failed to complete request.';
+        this.successMessage = '';
+      }
+
+    })
+  }
 }

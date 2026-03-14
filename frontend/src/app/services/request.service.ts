@@ -47,4 +47,12 @@ export class RequestService {
       withCredentials: true
     });
   }
+
+  updateStatus(id: string, payload: {
+    status: string
+  }): Observable<ServiceRequest>{
+    return this.http.patch<ServiceRequest>(`${this.api}/${id}/status`, payload, {
+      withCredentials: true
+    });
+  }
 }

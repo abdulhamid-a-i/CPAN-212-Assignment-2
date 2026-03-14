@@ -101,7 +101,7 @@ export const acceptQuote = async (req, res, next) => {
     quote.status = "accepted";
     await quote.save();
 
-    request.status = "quoted";
+    request.status = "assigned";
     request.acceptedQuoteId = quote._id;
 
     await request.save();
