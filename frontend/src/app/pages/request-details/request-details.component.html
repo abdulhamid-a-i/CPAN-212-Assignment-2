@@ -3,6 +3,7 @@
 
   <div class="card">
     <h3>{{ request.title }}</h3>
+    <p><strong>Owner: {{createdName}}</strong></p>
     <p><strong>Description:</strong> {{ request.description }}</p>
     <p><strong>Category:</strong> {{ categoryName}}</p>
     <p><strong>Location:</strong> {{ request.location }}</p>
@@ -42,11 +43,11 @@
       <p><strong>Days to Complete:</strong> {{ quote.daysToComplete }}</p>
       <p><strong>Status:</strong> {{ quote.status }}</p>
 
-      <button
-        *ngIf="isResident && quote.status === 'pending'"
-        (click)="acceptQuote(quote._id)">
-        Accept Quote
-      </button>
+    <button
+      *ngIf="currentUser?.role === 'resident' && quote.status === 'pending'"
+      (click)="acceptQuote(quote._id)">
+      Accept Quote
+    </button>
     </div>
   </div>
 </div>

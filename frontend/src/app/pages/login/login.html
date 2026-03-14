@@ -1,26 +1,25 @@
 <div class="auth-container">
   <div class="auth-card">
-      <h2>Login</h2>
-  <form>
-    <label>Email</label>
-    <input type="email" [(ngModel)]="email" name="email">
+    <h2>Login</h2>
+    
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <form>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email">
 
-    <label>Password</label>
-    <input type="password" [(ngModel)]="password" name="password">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" name="password">
 
-    <button type="button" (click)="login()">Login</button>
-  </form>
+      <button type="button" (click)="login()">Login</button>
+    </form>
 
-  @if (errorMessage) {
-  <div class="error-message">
-    {{ errorMessage }}
+
+
+    <p>
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </p>
   </div>
-}
-  
-  <p>
-    Don't have an account?
-    <a routerLink="/register">Register</a>
-  </p>
-  </div>
-
 </div>

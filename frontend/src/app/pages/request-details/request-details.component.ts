@@ -49,8 +49,9 @@ export class RequestDetailsComponent implements OnInit {
 
   loadCurrentUser(): void {
     this.authService.me().subscribe({
-      next: (user) => {
-        this.currentUser = user;
+      next: (res) => {
+        this.currentUser = res.user;
+        console.log(this.currentUser.role)
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';
@@ -79,6 +80,14 @@ export class RequestDetailsComponent implements OnInit {
       }
     });
   }
+
+  get createdName(): string {
+  if (!this.request) return '';
+  if (typeof this.request.createdBy === 'object' && this.request.createdBy?.fullName) {
+    return this.request.createdBy.fullName;
+  }
+  return 'Unknown Resident';
+}
 
   get isProvider(): boolean {
     return this.currentUser?.role === 'provider';

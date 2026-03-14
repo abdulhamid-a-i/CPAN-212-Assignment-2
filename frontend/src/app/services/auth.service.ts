@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, firstValueFrom } from 'rxjs';
 import { User } from '../models/user.model';
 
+export interface MeResponse {
+  authenticated: boolean;
+  user: User;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,8 +46,32 @@ export class AuthService {
     this.authenticated.set(false);
   }
 
-  me(): Observable<User> {
-  return this.http.get<User>(`${this.api}/me`, { withCredentials: true });
+    async loadSession(): Promise<boolean> {
+    try {
+      const response: any = await firstValueFrom(
+        this.http.get(`${this.api}/me`, { withCredentials: true })
+      );
+
+      this.authenticated.set(response.authenticated);
+
+      if (response.authenticated) {
+        this.user.set(response.user);
+      } else {
+        this.user.set(null);
+      }
+
+      return response.authenticated;
+    } catch {
+      this.user.set(null);
+      this.authenticated.set(false);
+      return false;
+    }
+  }
+
+
+
+  me(): Observable<MeResponse> {
+  return this.http.get<MeResponse>(`${this.api}/me`, { withCredentials: true });
   }
 
 

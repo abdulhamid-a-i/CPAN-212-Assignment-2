@@ -97,7 +97,9 @@ export const me = async (req, res, next) => {
       .findById(req.session.userId)
       .select("-passwordHash");
 
-    res.json(user);
+    res.json({
+      authenticated: true,
+      user});
 
   } catch (err) {
     next(err);
