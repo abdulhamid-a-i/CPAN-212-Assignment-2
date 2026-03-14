@@ -1,0 +1,17 @@
+.category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-form input,
+.category-form textarea,
+.category-form button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.category-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}

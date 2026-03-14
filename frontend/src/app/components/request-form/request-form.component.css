@@ -1,0 +1,22 @@
+.request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.request-form input,
+.request-form textarea,
+.request-form select,
+.request-form button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.request-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error {
+  color: red;
+}

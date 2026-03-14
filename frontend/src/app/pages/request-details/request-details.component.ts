@@ -88,6 +88,14 @@ export class RequestDetailsComponent implements OnInit {
     return this.currentUser?.role === 'resident';
   }
 
+  get categoryName(): string {
+  if (!this.request) return '';
+  if (typeof this.request.categoryId === 'object' && this.request.categoryId?.name) {
+    return this.request.categoryId.name;
+  }
+  return 'Unknown Category';
+}
+
   submitQuote(): void {
     if (this.quoteForm.invalid) {
       this.quoteForm.markAllAsTouched();

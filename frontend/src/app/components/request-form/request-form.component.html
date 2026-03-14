@@ -1,0 +1,23 @@
+<form [formGroup]="requestForm" (ngSubmit)="submit()" class="request-form">
+  <label>Title</label>
+  <input type="text" formControlName="title" />
+
+  <label>Description</label>
+  <textarea formControlName="description"></textarea>
+
+  <label>Category</label>
+  <select formControlName="categoryId">
+    <option value="">Select a category</option>
+    <option *ngFor="let category of categories" [value]="category._id">
+      {{ category.name }}
+    </option>
+  </select>
+
+  <p class="error" *ngIf="categoryError">{{ categoryError }}</p>
+  <p *ngIf="loadingCategories">Loading categories...</p>
+
+  <label>Location</label>
+  <input type="text" formControlName="location" />
+
+  <button type="submit">{{ submitLabel }}</button>
+</form>

@@ -13,4 +13,11 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.api, { withCredentials: true });
   }
+
+  createCategory(payload: { name: string; description?: string }): Observable<Category> {
+    return this.http.post<Category>(this.api, payload, {
+      withCredentials: true
+    });
+  }
+
 }

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header-row">
+    <h2>Service Requests</h2>
+
+    <div class="actions">
+      <a routerLink="/requests/new">Create Request</a>
+      <a routerLink="/categories/new">Create Category</a>
+    </div>
+  </div>
+
+  <p *ngIf="loading">Loading requests...</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngIf="!loading && requests.length === 0">
+    <p>No service requests found.</p>
+  </div>
+
+  <app-request-card
+    *ngFor="let request of requests"
+    [request]="request">
+  </app-request-card>
+</div>

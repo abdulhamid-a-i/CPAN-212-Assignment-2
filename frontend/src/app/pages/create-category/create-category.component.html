@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Create Category</h2>
+
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <app-category-form (formSubmitted)="handleSubmit($event)"></app-category-form>
+</div>

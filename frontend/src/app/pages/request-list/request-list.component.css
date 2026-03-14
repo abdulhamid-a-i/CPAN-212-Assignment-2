@@ -1,0 +1,29 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions a {
+  text-decoration: none;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
+}
+
+.error {
+  color: red;
+}

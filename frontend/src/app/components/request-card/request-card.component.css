@@ -1,0 +1,19 @@
+.request-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #fff;
+}
+
+.request-card h3 {
+  margin-top: 0;
+}
+
+.request-card a {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: bold;
+}
