@@ -20,6 +20,8 @@ Providers to:
 ### System Architechture
 This application was built using the MEAN technology Stack
 
+![System Architechture](images/cpan-212-system-architechture.drawio.png)
+
 ### Setup Instructions
 
 Run start-nsm.bat
