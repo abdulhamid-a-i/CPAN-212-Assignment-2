@@ -6,6 +6,7 @@ import { RequestDetailsComponent } from './pages/request-details/request-details
 import { RequestListComponent } from './pages/request-list/request-list.component';
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
 import { CreateCategoryComponent } from './pages/create-category/create-category.component';
+import { MyQuotesComponent } from './pages/My-Quotes/my-quotes.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'requests/new', component: CreateRequestComponent, canActivate: [authGuard] },
   { path: 'requests/:id', component: RequestDetailsComponent, canActivate: [authGuard] },
   { path: 'categories/new', component: CreateCategoryComponent, canActivate: [authGuard] },
+  { path: 'my-quotes', component: MyQuotesComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: 'login' }
 ];

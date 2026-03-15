@@ -6,6 +6,7 @@
     <nav class="nav-links" *ngIf="authService.authenticated()">
 
       <a routerLink="/requests" routerLinkActive="active-link">Requests Dashboard</a>
+      <a routerLink="/my-quotes" routerLinkActive="active-link">View My Quotes</a>
       <button class="logout-btn" (click)="logout()">Logout</button>
     </nav>
     </header>
