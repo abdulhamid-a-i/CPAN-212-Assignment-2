@@ -8,16 +8,17 @@
     <p><strong>Category:</strong> {{ categoryName}}</p>
     <p><strong>Location:</strong> {{ request.location }}</p>
     <p><strong>Status:</strong> {{ request.status }}</p>
-    <button
-      *ngIf="currentUser?.role === 'resident' && request.status === 'assigned'"
-      (click)="UpdateRequest('completed')">
-      Complete Request
-    </button>
-    <button
-      *ngIf="currentUser?.role === 'resident' && request.status === 'assigned'"
-      (click)="UpdateRequest('cancelled')">
-      Cancel Request
-    </button>
+    <div *ngIf="errorMessage !='Only request owner can view quotes' && currentUser?.role === 'resident' && request.status === 'assigned'">
+      <button
+        (click)="UpdateRequest('completed')">
+        Complete Request
+      </button>
+      <button
+        (click)="UpdateRequest('cancelled')">
+        Cancel Request
+      </button>
+    </div>
+    
   </div>
 
   <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
@@ -43,9 +44,14 @@
   <div class="card">
     <h3>Quotes</h3>
 
-    <div *ngIf="quotes.length === 0">
+    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes'">
       <p>No quotes available yet.</p>
     </div>
+
+    <div *ngIf="this.errorMessage =='Only request owner can view quotes'">
+      <p>Quotes Unavailable</p>
+    </div>
+
 
     <div class="quote-box" *ngFor="let quote of quotes">
       <p><strong>Price:</strong> ${{ quote.price }}</p>

@@ -78,8 +78,12 @@ export class RequestDetailsComponent implements OnInit {
       next: (data) => {
         this.quotes = data;
       },
-      error: () => {
-        this.errorMessage = 'Unable to load quotes.';
+      error: (err) => {
+        if(err?.error?.message === 'Forbidden'){
+          this.errorMessage = "Only request owner can view quotes"
+        } else{
+          this.errorMessage = 'Unable to load quotes.';
+        }
       }
     });
   }
