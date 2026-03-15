@@ -4,7 +4,7 @@ Team: Abdulhamid Weheliye (n01756626, Section A), Mbaye Fall (n01764121, Section
 
 ### Project Overview
 
-This application is full-stack web application based on the approved Buisness Requirements Documrnt form the Neighbourhood Service Market Place.
+This application is full-stack MEAN web application based on the approved Buisness Requirements Documrnt form the Neighbourhood Service Market Place.
 
 This application allows for 
 residents to:
@@ -24,7 +24,31 @@ This application was built using the MEAN technology Stack
 
 Run start-nsm.bat
 
-### Database Schema Explanation
+### Database Schema Explanation:
+
+#### Quotes:
+We reference ServiceRequest for requestId to ensure quotes are linked to the request they're made on
+We reference User for providerId to ensure ownership is linked to the appropriate user account.
+
+status is set as an enum to ensure only valid status values are accepted by the backend.
+
+#### Category:
+name is set to unique to ensure duplicate categories cannot be made
+
+#### ServiceRequest:
+categoryId references category to link the appropriate category to the request.
+
+createdBy references User to ensure request ownership is linked to the appropriate user account.
+
+status is set as an enum to ensure only valid status values are accepted by the backend.
+
+acceptedQuoteId references Quote to ensure that the accepted quote is linked to the appropriate request.
+
+
+#### User:
+email is set to unique to prevent a user from making multiple accounts with the same email.
+
+role is an enum to ensure only valid roles are accepted by the backend.
 
 
 
@@ -50,8 +74,54 @@ Ensures a provider can only place one quote per request.
 
 ### Api Endpoint List:
 
+#### Auth Endpoints:
+- POST /api/auth/register
+- POST /api/auth/login
+- POST /api/auth/logout
+- GET /api/auth/me
+
+#### Category Endpoints:
+- GET /api/categories
+- POST /api/categories
+
+#### Service Request Endpoints:
+- POST /api/requests
+- GET /api/requests
+- GET /api/requests/:id
+- PATCH /api/requests/:id/status
+
+#### Quotes Endpoints:
+- POST /api/requests/:id/quotes
+- GET /api/requests/:id/quotes
+- PATCH /api/quotes/:id/accept
+    - Uses Method B
+
 
 ### Role Distribution:
+
+Abdulhamid: Backend development
+Mbaye: Backend development
+Cheyenne: Front end development, dashboard and UI desgin, service design
+Bandanpreet: Front end development, details and my-quotes page, front end models, service design
+Sofia: Front end development, login and registration, authentication service design
+
+### Example env files:
+
+#### Backend env:
+
+MONGODB_URI=mongodb://127.0.0.1:27017/nsm
+
+PORT=3000
+
+SESSION_SECRET=nsmsessionsecret
+
+CLIENT_ORIGIN=http://localhost:4200
+
+#### Frontend environments.ts:
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/api'
+};
 
 
 
