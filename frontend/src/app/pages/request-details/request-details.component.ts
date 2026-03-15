@@ -159,7 +159,7 @@ export class RequestDetailsComponent implements OnInit {
   UpdateRequest(status: string): void {
     this.requestService.updateStatus(this.requestId,{status: status}).subscribe({
       next: () => {
-        this.successMessage = 'Request completed'
+        this.successMessage = 'Request Updated'
         this.errorMessage = '';
         this.loadQuotes();
         this.loadRequest();
