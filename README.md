@@ -30,22 +30,22 @@ Run start-nsm.bat
 
 ### Index Justification
 
-    #### User's email Index:
-    set to unique to ensure duplicate emails are not accepted into database
+#### User's email Index:
+set to unique to ensure duplicate emails are not accepted into database
 
-    #### Categories's name Index:
-    set to unique to ensure duplicate categories cannot be created.
+#### Categories's name Index:
+set to unique to ensure duplicate categories cannot be created.
 
-    #### Service Request's Text Index on title + description:
-    A compound index to allow for effecient full-text search over both title and description.
+#### Service Request's Text Index on title + description:
+A compound index to allow for effecient full-text search over both title and description.
 
-    #### Quotes Indexes:
+#### Quotes Indexes:
 
-        ##### requestId index:
-        This index improves query performance by preventing a full collection scan when loading quotes
+##### requestId index:
+This index improves query performance by preventing a full collection scan when loading quotes
 
-        ##### compound requestId + providerId:
-        Ensures a provider can only place one quote per request.
+##### compound requestId + providerId:
+Ensures a provider can only place one quote per request.
 
 
 ### Api Endpoint List:
