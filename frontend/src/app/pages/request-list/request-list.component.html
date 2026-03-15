@@ -3,7 +3,7 @@
     <h2>Service Requests</h2>
 
     <div class="actions">
-      <a routerLink="/requests/new">Create Request</a>
+      <a *ngIf="currentUser?.role === 'resident'" routerLink="/requests/new">Create Request</a>
       <a routerLink="/categories/new">Create Category</a>
     </div>
   </div>
