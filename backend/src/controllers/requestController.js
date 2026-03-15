@@ -96,11 +96,13 @@ export const updateRequestStatus = async (req, res, next) => {
       throw new AppError(`Invalid Transition: ${request.status} to ${status}`, 400)
     }
 
-    const acceptedQuote = await Quote.findById(request.acceptedQuoteId);
-    if (acceptedQuote && status === 'cancelled'){
-      acceptedQuote.status = 'rejected';
-      acceptedQuote.save();
-    } 
+
+    if(status === 'cancelled'){
+      await Quote.updateMany(
+      { requestId: request._id },
+      { $set: { status: "rejected" } }
+);
+    }
 
     request.status = status;
 

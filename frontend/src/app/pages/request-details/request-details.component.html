@@ -14,7 +14,7 @@
         (click)="UpdateRequest('completed')">
         Complete Request
       </button>
-      <button
+      <button *ngIf="request.status === 'open' || request.status === 'quoted' || request.status === 'assigned'"
         (click)="UpdateRequest('cancelled')">
         Cancel Request
       </button>

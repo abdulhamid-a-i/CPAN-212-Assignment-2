@@ -54,7 +54,7 @@ ngOnInit(): void {
       error: () => {
         this.errorMessage = 'Unable to load requests.';
         this.loading = false;
-        this.cdr.detectChanges();
+        
       }
     });
   }
@@ -67,7 +67,7 @@ ngOnInit(): void {
     },
     error: () => {
       this.errorMessage = 'Unable to load categories.';
-      this.cdr.detectChanges();
+      
     }
   });
 }
@@ -79,7 +79,7 @@ ngOnInit(): void {
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';
-        this.cdr.detectChanges();
+        
       }
     });
   }

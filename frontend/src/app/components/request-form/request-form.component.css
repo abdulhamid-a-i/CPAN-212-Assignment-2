@@ -20,7 +20,7 @@
 .error {
   color: #d93025;
   font-size: 0.85rem;
-  margin-top: 4px;
+  margin: 0px;
 }
 
 input.ng-invalid.ng-touched,
