@@ -6,7 +6,7 @@ import { RequestDetailsComponent } from './pages/request-details/request-details
 import { RequestListComponent } from './pages/request-list/request-list.component';
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
 import { CreateCategoryComponent } from './pages/create-category/create-category.component';
-import { MyQuotesComponent } from './pages/My-Quotes/my-quotes.component';
+import { MyQuotesComponent } from './pages/my-quotes/my-quotes.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
