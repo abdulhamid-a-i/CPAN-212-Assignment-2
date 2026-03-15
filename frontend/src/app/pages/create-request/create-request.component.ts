@@ -25,9 +25,6 @@ export class CreateRequestComponent {
 
   ngOnInit(): void {
     this.loadCurrentUser();
-    if (this.currentUser?.role !== "resident"){
-      this.router.navigate(['/requests']);
-    }
   }
 
   handleSubmit(payload: {
@@ -53,7 +50,9 @@ export class CreateRequestComponent {
     this.authService.me().subscribe({
       next: (res) => {
         this.currentUser = res.user;
-        console.log(this.currentUser.role)
+      if (this.currentUser.role === "provider"){
+      this.router.navigate(['/requests']);
+    }
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';

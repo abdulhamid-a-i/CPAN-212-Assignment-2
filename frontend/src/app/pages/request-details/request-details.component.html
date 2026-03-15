@@ -8,8 +8,9 @@
     <p><strong>Category:</strong> {{ categoryName}}</p>
     <p><strong>Location:</strong> {{ request.location }}</p>
     <p><strong>Status:</strong> {{ request.status }}</p>
-    <div *ngIf="errorMessage !='Only request owner can view quotes' && currentUser?.role === 'resident' && request.status === 'assigned'">
+    <div *ngIf="errorMessage !='Only request owner can view quotes' && currentUser?.role === 'resident'">
       <button
+        *ngIf="request.status === 'assigned'"
         (click)="UpdateRequest('completed')">
         Complete Request
       </button>
@@ -24,7 +25,7 @@
   <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-  <div class="card" *ngIf="isProvider">
+  <div class="card" *ngIf="isProvider && (request.status == 'open' || request.status == 'quoted') ">
     <h3>Submit a Quote</h3>
 
     <form [formGroup]="quoteForm" (ngSubmit)="submitQuote()">
@@ -48,8 +49,12 @@
       <p>No quotes available yet.</p>
     </div>
 
-    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes' && currentUser?.role == 'provider'">
+    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes' && currentUser?.role == 'provider' && (request.status == 'open' || request.status == 'quoted')">
       <p>You haven't submitted a quote yet</p>
+    </div>
+
+    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes' && currentUser?.role == 'provider' && (request.status == 'assigned' || request.status == 'completed' || request.status == 'cancelled')">
+      <p>You cannot submit a quote at this time</p>
     </div>
 
     <div *ngIf="this.errorMessage =='Only request owner can view quotes'">

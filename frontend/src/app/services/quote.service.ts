@@ -2,13 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Quote } from '../models/quote.model';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteService {
   private http = inject(HttpClient);
-  private api = 'http://localhost:3000/api';
+  private api = `${environment.apiUrl}`;
 
   createQuote(requestId: string, payload: {
     price: number;

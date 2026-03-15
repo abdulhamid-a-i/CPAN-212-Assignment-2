@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, firstValueFrom } from 'rxjs';
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environments';
 
 export interface MeResponse {
   authenticated: boolean;
@@ -12,7 +13,7 @@ export interface MeResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  api = "http://localhost:3000/api/auth";
+  api = `${environment.apiUrl}/auth`;
 
   user = signal<User | null>(null);
   authenticated = signal(false);

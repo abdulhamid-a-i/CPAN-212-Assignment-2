@@ -2,13 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ServiceRequest } from '../models/request.model';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
   private http = inject(HttpClient);
-  private api = 'http://localhost:3000/api/requests';
+  private api = `${environment.apiUrl}/requests`;
 
   getRequests(filters?: { status?: string; categoryId?: string; q?: string }): Observable<ServiceRequest[]> {
     let params = new HttpParams();
