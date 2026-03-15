@@ -52,6 +52,7 @@
       <p><strong>Message:</strong> {{ quote.message }}</p>
       <p><strong>Days to Complete:</strong> {{ quote.daysToComplete }}</p>
       <p><strong>Status:</strong> {{ quote.status }}</p>
+      <p><strong>By:</strong> {{getProviderName(quote)}}</p>
 
     <button
       *ngIf="currentUser?.role === 'resident' && quote.status === 'pending'"

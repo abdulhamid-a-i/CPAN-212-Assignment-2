@@ -18,6 +18,8 @@ import { User } from '../../models/user.model';
   templateUrl: './request-details.component.html',
   styleUrl: './request-details.component.css'
 })
+
+
 export class RequestDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private fb = inject(FormBuilder);
@@ -29,6 +31,7 @@ export class RequestDetailsComponent implements OnInit {
   quotes: Quote[] = [];
   currentUser: User | null = null;
   requestId = '';
+
 
   successMessage = '';
   errorMessage = '';
@@ -96,6 +99,13 @@ export class RequestDetailsComponent implements OnInit {
   get isResident(): boolean {
     return this.currentUser?.role === 'resident';
   }
+
+  getProviderName(quote: Quote): string {
+    if (typeof quote.providerId === 'object') {
+      return quote.providerId.fullName;
+    }
+    return 'Unknown Provider';
+}
 
   get categoryName(): string {
   if (!this.request) return '';

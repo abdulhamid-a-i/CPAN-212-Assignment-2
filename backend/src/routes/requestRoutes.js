@@ -7,7 +7,7 @@ import {
 } from "../controllers/requestController.js";
 
 import { requireAuth } from "../middleware/requireAuth.js";
-import { requireRole } from "../middleware/requireRole.js";
+import { requireRole, requireRequestOwnership } from "../middleware/requireRole.js";
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post("/", requireAuth, requireRole("resident"), createRequest);
 router.patch(
   "/:id/status",
   requireAuth,
-  requireRole("resident"),
+  requireRole("resident"), requireRequestOwnership,
   updateRequestStatus
 );
 

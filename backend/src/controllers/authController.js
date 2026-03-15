@@ -90,7 +90,7 @@ export const logout = async (req, res, next) => {
 export const me = async (req, res, next) => {
   try {
     if (!req.session.userId) {
-      throw new AppError("Unauthorized", 401);
+      return next(new AppError("Unauthorized", 401));
     }
 
     const user = await User
