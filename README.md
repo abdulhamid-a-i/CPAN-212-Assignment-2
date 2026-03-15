@@ -4,7 +4,7 @@ Team: Abdulhamid Weheliye (n01756626, Section A), Mbaye Fall (n01764121, Section
 
 ### Project Overview
 
-This application is full-stack MEAN web application based on the approved Buisness Requirements Documrnt form the Neighbourhood Service Market Place.
+This application is full-stack MEAN web application based on the approved Buisness Requirements Document form the Neighbourhood Service Market Place.
 
 This application allows for 
 residents to:
