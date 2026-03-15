@@ -55,10 +55,10 @@ role is an enum to ensure only valid roles are accepted by the backend.
 ### Index Justification
 
 #### User's email Index:
-set to unique to ensure duplicate emails are not accepted into database
+Improves search performance during user login and authentication
 
 #### Categories's name Index:
-set to unique to ensure duplicate categories cannot be created.
+Improves page loading performance when creating a service request
 
 #### Service Request's Text Index on title + description:
 A compound index to allow for effecient full-text search over both title and description.
