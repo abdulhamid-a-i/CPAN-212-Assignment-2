@@ -125,6 +125,25 @@ export const environment = {
   apiUrl: 'http://localhost:3000/api'
 };
 
+### Example Queries:
+
+#### Search Query:
+GET http://localhost:4200/requests/69b661f97c0c95905a569238
+
+#### Filter Query:
+http://localhost:3000/api/requests?status=open&categoryId=69b5d2d142f14b20a71d8b75&q=TV
+
+#### Login Query:
+http://localhost:3000/api/auth/login
+###### Request Body:
+{"email":"test@gmail.com","password":"asdewq12"}
 
 
+### Scalability Considerations:
+As our database collections grow we would need to consider query performance and our indexing strategy to ensure queries do not become excessively slow.
 
+As the number of requests and qoutes on the system grow, we would also need to consider the implementation of pagination to improve system performance and the UI and UX.
+
+Our current my-quote page implementation utitlizes an inefficient method for acquiring all user created quotes. As the requests and quotes collections grow, we would need to consider creating  a dedicated endpoint for retrieving a specific user's quotes.
+
+As the userbase grows we would also need to consider how to have our frontend UI adapt to multiple device sizes.
