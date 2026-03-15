@@ -8,13 +8,13 @@ This application is full-stack MEAN web application based on the approved Buisne
 
 This application allows for 
 residents to:
-    - Place and manage service requests
-    - Create Service request categories
+- Place and manage service requests
+- Create Service request categories
 
 Providers to:
-    - View service requests
-    - Place quotes on service requests
-    - Create Service request categories
+- View service requests
+- Place quotes on service requests
+- Create Service request categories
 
 
 ### System Architechture
