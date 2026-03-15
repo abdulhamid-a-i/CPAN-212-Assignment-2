@@ -1,9 +1,24 @@
 <form [formGroup]="requestForm" (ngSubmit)="submit()" class="request-form">
+
   <label>Title</label>
   <input type="text" formControlName="title" />
 
+  <p class="error" *ngIf="title?.touched && title?.errors">
+    <span *ngIf="title?.errors?.['required']">Title is required.</span>
+    <span *ngIf="title?.errors?.['minlength']">Title must be at least 5 characters.</span>
+    <span *ngIf="title?.errors?.['maxlength']">Title cannot exceed 80 characters.</span>
+  </p>
+
+
   <label>Description</label>
   <textarea formControlName="description"></textarea>
+
+  <p class="error" *ngIf="description?.touched && description?.errors">
+    <span *ngIf="description?.errors?.['required']">Description is required.</span>
+    <span *ngIf="description?.errors?.['minlength']">Description must be at least 10 characters.</span>
+    <span *ngIf="description?.errors?.['maxlength']">Description cannot exceed 1000 characters.</span>
+  </p>
+
 
   <label>Category</label>
   <select formControlName="categoryId">
@@ -13,11 +28,24 @@
     </option>
   </select>
 
+  <p class="error" *ngIf="categoryId?.touched && categoryId?.errors">
+    Category is required.
+  </p>
+
   <p class="error" *ngIf="categoryError">{{ categoryError }}</p>
   <p *ngIf="loadingCategories">Loading categories...</p>
+
 
   <label>Location</label>
   <input type="text" formControlName="location" />
 
+  <p class="error" *ngIf="location?.touched && location?.errors">
+    <span *ngIf="location?.errors?.['required']">Location is required.</span>
+    <span *ngIf="location?.errors?.['minlength']">Location must be at least 2 characters.</span>
+    <span *ngIf="location?.errors?.['maxlength']">Location cannot exceed 80 characters.</span>
+  </p>
+
+
   <button type="submit">{{ submitLabel }}</button>
+
 </form>

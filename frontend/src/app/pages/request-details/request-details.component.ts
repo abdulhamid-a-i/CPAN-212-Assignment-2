@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 import { ServiceRequest } from '../../models/request.model';
 import { Quote } from '../../models/quote.model';
 import { User } from '../../models/user.model';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-request-details',
@@ -26,6 +27,7 @@ export class RequestDetailsComponent implements OnInit {
   private requestService = inject(RequestService);
   private quoteService = inject(QuoteService);
   private authService = inject(AuthService);
+  private cdr = inject(ChangeDetectorRef);
 
   request: ServiceRequest | null = null;
   quotes: Quote[] = [];
@@ -57,6 +59,7 @@ export class RequestDetailsComponent implements OnInit {
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -68,6 +71,7 @@ export class RequestDetailsComponent implements OnInit {
       },
       error: () => {
         this.errorMessage = 'Unable to load request details.';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -80,8 +84,10 @@ export class RequestDetailsComponent implements OnInit {
       error: (err) => {
         if(err?.error?.message === 'Forbidden'){
           this.errorMessage = "Only request owner can view quotes"
+          this.cdr.detectChanges();
         } else{
           this.errorMessage = 'Unable to load quotes.';
+          this.cdr.detectChanges();
         }
       }
     });
@@ -140,6 +146,7 @@ export class RequestDetailsComponent implements OnInit {
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Failed to submit quote.';
         this.successMessage = '';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -155,6 +162,7 @@ export class RequestDetailsComponent implements OnInit {
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Failed to accept quote.';
         this.successMessage = '';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -170,6 +178,7 @@ export class RequestDetailsComponent implements OnInit {
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Failed to complete request.';
         this.successMessage = '';
+        this.cdr.detectChanges();
       }
 
     })

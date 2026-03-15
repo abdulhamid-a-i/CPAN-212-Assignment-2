@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-request-form',
@@ -14,6 +15,7 @@ import { CategoryService } from '../../services/category.service';
 export class RequestFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private categoryService = inject(CategoryService);
+  private cdr = inject(ChangeDetectorRef);
 
   @Input() submitLabel = 'Create Request';
   @Output() formSubmitted = new EventEmitter<{
@@ -48,6 +50,7 @@ export class RequestFormComponent implements OnInit {
       error: () => {
         this.categoryError = 'Unable to load categories.';
         this.loadingCategories = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -64,5 +67,22 @@ export class RequestFormComponent implements OnInit {
       categoryId: this.requestForm.value.categoryId!,
       location: this.requestForm.value.location!
     });
+    this.cdr.detectChanges();
   }
+
+  get title() {
+  return this.requestForm.get('title');
+}
+
+get description() {
+  return this.requestForm.get('description');
+}
+
+get categoryId() {
+  return this.requestForm.get('categoryId');
+}
+
+get location() {
+  return this.requestForm.get('location');
+}
 }

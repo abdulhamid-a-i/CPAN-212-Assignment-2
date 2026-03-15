@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -21,13 +22,15 @@ export class RegisterComponent {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   async register() {
 
     if (!this.fullName || !this.email || !this.password) {
       this.errorMessage = "All fields are required";
+      this.cdr.detectChanges();
       return;
     }
 
@@ -47,6 +50,7 @@ export class RegisterComponent {
     } catch (err) {
       console.error('Registration error:', err);
       this.errorMessage = 'Registration failed: email might already be taken';
+      this.cdr.detectChanges();
     }
   }
 }

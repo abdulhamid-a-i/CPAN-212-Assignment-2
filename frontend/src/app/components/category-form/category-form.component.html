@@ -1,9 +1,24 @@
 <form [formGroup]="categoryForm" (ngSubmit)="submit()" class="category-form">
+
   <label>Category Name</label>
   <input type="text" formControlName="name" />
+
+  <p class="error" *ngIf="name?.invalid && (name?.touched || submitted)">
+    <span *ngIf="name?.errors?.['required']">Category name is required.</span>
+    <span *ngIf="name?.errors?.['minlength']">Category name must be at least 2 characters.</span>
+    <span *ngIf="name?.errors?.['maxlength']">Category name cannot exceed 50 characters.</span>
+  </p>
+
 
   <label>Description</label>
   <textarea formControlName="description"></textarea>
 
+  <p class="error" *ngIf="description?.invalid && (description?.touched || submitted)">
+    <span *ngIf="description?.errors?.['maxlength']">
+      Description cannot exceed 200 characters.
+    </span>
+  </p>
+
   <button type="submit">Create Category</button>
+
 </form>

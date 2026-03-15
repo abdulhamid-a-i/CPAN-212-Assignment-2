@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -22,6 +22,7 @@ export class RequestListComponent implements OnInit {
   private requestService = inject(RequestService);
   private authService = inject(AuthService);
   private categoryService = inject(CategoryService);
+  private cdr = inject(ChangeDetectorRef);
 
   requests: ServiceRequest[] = [];
   loading = false;
@@ -53,6 +54,7 @@ ngOnInit(): void {
       error: () => {
         this.errorMessage = 'Unable to load requests.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -65,6 +67,7 @@ ngOnInit(): void {
     },
     error: () => {
       this.errorMessage = 'Unable to load categories.';
+      this.cdr.detectChanges();
     }
   });
 }
@@ -76,6 +79,7 @@ ngOnInit(): void {
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';
+        this.cdr.detectChanges();
       }
     });
   }

@@ -15,3 +15,14 @@
   min-height: 100px;
   resize: vertical;
 }
+
+.error {
+  color: #d93025;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid #d93025;
+}

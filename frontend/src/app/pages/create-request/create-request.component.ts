@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { RequestFormComponent } from '../../components/request-form/request-form.component';
 import { RequestService } from '../../services/request.service';
 import { User } from '../../models/user.model';
+import { ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class CreateRequestComponent {
   private requestService = inject(RequestService);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private cdr = inject(ChangeDetectorRef);
 
   successMessage = '';
   errorMessage = '';
@@ -33,6 +35,7 @@ export class CreateRequestComponent {
     categoryId: string;
     location: string;
   }): void {
+
     this.requestService.createRequest(payload).subscribe({
       next: (request) => {
         this.successMessage = 'Request created successfully.';
@@ -42,6 +45,7 @@ export class CreateRequestComponent {
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Failed to create request.';
         this.successMessage = '';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -56,6 +60,7 @@ export class CreateRequestComponent {
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';
+        this.cdr.detectChanges();
       }
     });
   }
