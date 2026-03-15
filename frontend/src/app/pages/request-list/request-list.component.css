@@ -27,3 +27,40 @@
 .error {
   color: red;
 }
+
+.filter-bar {
+  display: flex;
+  align-items: center; 
+  gap: 12px;      
+  margin: 15px 0;
+  flex-wrap: wrap;         
+}
+
+
+.filter-bar input,
+.filter-bar select {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  height: 36px;
+}
+
+
+.filter-bar input {
+  min-width: 200px;
+}
+
+
+.filter-bar button {
+  position: relative;
+  bottom: 13px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2965b4;
+  color: white;
+}
+
+.filter-bar button:hover {
+  background-color: rgb(25, 51, 104);
+}

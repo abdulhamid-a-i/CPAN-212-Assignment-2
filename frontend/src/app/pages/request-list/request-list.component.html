@@ -8,6 +8,49 @@
     </div>
   </div>
 
+<div class="filter-bar">
+
+  <!-- Search -->
+  <input
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="filters.q"
+    (ngModelChange)="onSearchChange($event)"
+  />
+
+  <!-- Status -->
+  <select
+    [(ngModel)]="filters.status"
+    (change)="onFilterChange()"
+  >
+    <option value="">All Statuses</option>
+    <option value="open">Open</option>
+    <option value="quoted">Quoted</option>
+    <option value="assigned">Assigned</option>
+    <option value="completed">Completed</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+
+  <!-- Category -->
+  <select
+    [(ngModel)]="filters.categoryId"
+    (change)="onFilterChange()"
+  >
+    <option value="">All Categories</option>
+
+    <option
+      *ngFor="let category of categories"
+      [value]="category._id"
+    >
+      {{ category.name }}
+    </option>
+
+  </select>
+
+  <button class="" (click)="clearFilters()">Clear Filters</button>
+
+</div>
+
   <p *ngIf="loading">Loading requests...</p>
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
