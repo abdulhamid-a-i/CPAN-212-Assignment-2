@@ -8,11 +8,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 5px;
 }
 
 .actions {
   display: flex;
+  justify-content: left;
   gap: 12px;
 }
 

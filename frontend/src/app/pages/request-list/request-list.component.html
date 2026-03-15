@@ -2,10 +2,11 @@
   <div class="header-row">
     <h2>Service Requests</h2>
 
-    <div class="actions">
+
+  </div>
+  <div class="actions">
       <a *ngIf="currentUser?.role === 'resident'" routerLink="/requests/new">Create Request</a>
       <a routerLink="/categories/new">Create Category</a>
-    </div>
   </div>
 
 <div class="filter-bar">
