@@ -1,6 +1,9 @@
 <div class="auth-container">
   <div class="auth-card">
     <h2>Create Account</h2>
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
   <form>
     <label>Full Name</label>
     <input [(ngModel)]="fullName" name="fullName">
@@ -20,11 +23,8 @@
     <button type="button" (click)="register()">Register</button>
   </form>
   
-  @if (errorMessage) {
-  <div class="error-message">
-    {{ errorMessage }}
-  </div>
-}
+
+
 
   <p>
     <a routerLink="/">Back to login</a>

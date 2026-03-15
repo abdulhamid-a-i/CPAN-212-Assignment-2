@@ -23,6 +23,7 @@ export class LoginComponent {
   ) {}
 
   async login() {
+    this.errorMessage = '';
     if (!this.email || !this.password) {
       this.errorMessage = "Email and password are required";
       return;
@@ -37,7 +38,9 @@ export class LoginComponent {
       this.router.navigate(['/requests']);
 
     } catch {
+      console.log("error caught")
       this.errorMessage = 'Invalid email or password';
+      return;
     }
   }
 }
