@@ -54,7 +54,6 @@ export class RequestDetailsComponent implements OnInit {
     this.authService.me().subscribe({
       next: (res) => {
         this.currentUser = res.user;
-        console.log(this.currentUser.role)
       },
       error: () => {
         this.errorMessage = 'Unable to load current user.';

@@ -16,6 +16,7 @@ export class AuthService {
   api = `${environment.apiUrl}/auth`;
 
   user = signal<User | null>(null);
+  role = signal(false);
   authenticated = signal(false);
 
 
@@ -44,6 +45,7 @@ export class AuthService {
     );
 
     this.user.set(null);
+    this.role.set(false);
     this.authenticated.set(false);
   }
 
@@ -60,6 +62,11 @@ export class AuthService {
       } else {
         this.user.set(null);
       }
+      if(response.user.role == 'provider'){
+        console.log("Inside if: "+this.role);
+      this.role.set(true);
+      console.log("Inside if: "+this.role);
+    }
 
       return response.authenticated;
     } catch {

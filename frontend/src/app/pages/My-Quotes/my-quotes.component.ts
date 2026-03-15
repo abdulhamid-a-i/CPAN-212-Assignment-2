@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { QuoteService } from '../../services/quote.service';
 import { RequestService } from '../../services/request.service';
-
+import { AuthService } from '../../services/auth.service';
 import { Quote } from '../../models/quote.model';
 import { ServiceRequest } from '../../models/request.model';
+import { User } from '../../models/user.model';
 
 interface QuoteWithRequest extends Quote {
   requestTitle?: string;
@@ -24,11 +25,15 @@ export class MyQuotesComponent implements OnInit {
 
   private quoteService = inject(QuoteService);
   private requestService = inject(RequestService);
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
   quotes: QuoteWithRequest[] = [];
+  currentUser: User | null = null;
   errorMessage = '';
 
   ngOnInit(): void {
+    this.loadCurrentUser();
     this.loadMyQuotes();
   }
 
@@ -56,6 +61,20 @@ export class MyQuotesComponent implements OnInit {
         this.errorMessage = 'Unable to load requests.';
       }
 
+    });
+  }
+  
+  loadCurrentUser(): void {
+    this.authService.me().subscribe({
+      next: (res) => {
+        this.currentUser = res.user;
+        if(this.currentUser.role != 'provider'){
+        this.router.navigate(['/requests']);
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Unable to load current user.';
+      }
     });
   }
 }
