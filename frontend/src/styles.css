@@ -24,6 +24,7 @@ h1 {
 }
 
 .topbar {
+  min-height: 100px;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -31,7 +32,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 18px 32px;
-  background: rgba(13, 93, 214, 0.72);
+  background: rgb(2, 39, 94);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }

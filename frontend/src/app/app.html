@@ -1,9 +1,12 @@
 <div class="app-shell">
     <header class="topbar">
-        <div>
-            <h1>Neighborhood Service Marketplace</h1>
+        <div >
+            <a routerLink="/requests"><h1 style="color: white;">Neighborhood Service Marketplace</h1></a>
         </div>
     <nav class="nav-links" *ngIf="authService.authenticated()">
+    <div class="user-badge">
+        <h3>User: {{UserName}}</h3>
+    </div>
       <a routerLink="/requests" routerLinkActive="active-link">Requests Dashboard</a>
       <button class="logout-btn" (click)="logout()">Logout</button>
     </nav>

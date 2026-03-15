@@ -44,8 +44,12 @@
   <div class="card">
     <h3>Quotes</h3>
 
-    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes'">
+    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes' && currentUser?.role == 'resident'">
       <p>No quotes available yet.</p>
+    </div>
+
+    <div *ngIf="quotes.length === 0 && this.errorMessage !='Only request owner can view quotes' && currentUser?.role == 'provider'">
+      <p>You haven't submitted a quote yet</p>
     </div>
 
     <div *ngIf="this.errorMessage =='Only request owner can view quotes'">
