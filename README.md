@@ -101,11 +101,11 @@ Ensures a provider can only place one quote per request.
 
 ### Role Distribution:
 
-Abdulhamid: Backend development
-Mbaye: Backend development
-Cheyenne: Front end development, dashboard and UI desgin, service design
-Bandanpreet: Front end development, details and my-quotes page, front end models, service design
-Sofia: Front end development, login and registration, authentication service design
+- Abdulhamid: Backend development
+- Mbaye: Backend development
+- Cheyenne: Front end development, dashboard and UI desgin, service design
+- Bandanpreet: Front end development, details and my-quotes page, front end models, service design
+- Sofia: Front end development, login and registration, authentication service design
 
 ### Example env files:
 
